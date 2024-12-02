@@ -1,0 +1,7 @@
+<mat-form-field class="example-form-field">
+    <mat-label>Take a note...</mat-label>
+    <!-- <input > -->
+    <textarea matInput type="text"  [formControl]="searchControl"  ></textarea>
+</mat-form-field>
+
+<button (click)="saveTask(taskObj)">save task</button>
