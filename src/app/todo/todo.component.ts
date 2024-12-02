@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { privateDecrypt } from 'crypto';
 import { Task } from 'src/intefaces/task.interface';
 import { LocalServiceService } from 'src/services/local-service.service';
+import { DynamicDailogComponent } from 'src/dailog/dynamic-dailog/dynamic-dailog.component';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-todo',
@@ -14,7 +17,8 @@ export class TodoComponent implements OnInit {
   x: Task[] = [];
 
   constructor(
-    private localStorage : LocalServiceService
+    private localStorage : LocalServiceService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -35,4 +39,15 @@ export class TodoComponent implements OnInit {
       console.log(this.receivedData, this.localStorage.getItem("tasks"))
     }
   }
+
+  openDialog(item:any): void {
+    const dialogRef = this.dialog.open(DynamicDailogComponent, {
+      data: item
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog was closed', result);
+    });
+  }
+
 }
