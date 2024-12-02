@@ -29,7 +29,7 @@ export class TodoComponent implements OnInit {
 
 
   getTasksList(){
-    console.log(this.receivedData)
+    console.log(this.receivedData, "-------------> 32")
     if(this.receivedData.length == 0){
       this.receivedData = this.localStorage.getItem("tasks")
       console.log(this.receivedData, this.localStorage.getItem("tasks"))

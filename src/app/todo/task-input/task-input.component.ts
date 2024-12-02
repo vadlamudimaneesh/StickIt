@@ -30,26 +30,26 @@ export class TaskInputComponent implements OnInit {
         description : value,
         timeStamp : Date.now()    
       }
-      console.log(this.taskObj)
     });
    }
 
 
   ngOnInit(): void {
-    console.log()
   }
 
   saveTask(obj: Task){
     let tasksData = this.localStorage.getItem("tasks")
     obj.id = 'id-' + Date.now();
+    console.log(tasksData, "----------> 43")
     if(tasksData == null || tasksData.length == 0){
       this.localStorage.setItem("tasks", [obj])
+      this.updateInputTask.emit(this.localStorage.getItem("tasks"));
     }else{
       tasksData.push(obj)
       this.localStorage.setItem("tasks", tasksData) 
+      this.updateInputTask.emit(tasksData);
     }
     console.log(tasksData, "-----------------> 51")
-    this.updateInputTask.emit(tasksData);
 
   }
 

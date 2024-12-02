@@ -1,8 +1,4 @@
-<p>todo works!</p>
-{{x}}
-<!-- <app-task-input></app-task-input> -->
 <app-task-input (updateInputTask)="handleChildEvent($event)"></app-task-input>
-
 
 <div *ngFor="let item of receivedData">
     <p>{{ item.title }} {{item.description}} {{item.id}}</p>
