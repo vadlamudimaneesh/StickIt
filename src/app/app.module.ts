@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TodoComponent } from './todo/todo.component';
-import { TasksListComponent } from './todo/tasks-list/tasks-list.component';
-import { TasksItemComponent } from './todo/tasks-item/tasks-item.component';
-import { TaskInputComponent } from './todo/task-input/task-input.component';
+import { TasksComponent } from './tasks/tasks.component';
+import { TasksListComponent } from './tasks/tasks-list/tasks-list.component';
+import { TasksItemComponent } from './tasks/tasks-item/tasks-item.component';
+import { TaskInputComponent } from './tasks/task-input/task-input.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { DailogModule } from 'src/dailog/dailog.module';
 @NgModule({
   declarations: [
     AppComponent,
-    TodoComponent,
+    TasksComponent,
     TasksListComponent,
     TasksItemComponent,
     TaskInputComponent

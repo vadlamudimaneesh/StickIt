@@ -9,6 +9,7 @@ export class LocalServiceService {
   constructor() { }
 
   setItem(key:string, value:object){
+    console.log(key, value)
     localStorage.setItem(key , JSON.stringify(value));
   }
 

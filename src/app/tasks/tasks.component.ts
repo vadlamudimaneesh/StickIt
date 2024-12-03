@@ -4,21 +4,22 @@ import { Task } from 'src/intefaces/task.interface';
 import { LocalServiceService } from 'src/services/local-service.service';
 import { DynamicDailogComponent } from 'src/dailog/dynamic-dailog/dynamic-dailog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TasksService } from 'src/services/tasks.service';
 
 
 @Component({
-  selector: 'app-todo',
-  templateUrl: './todo.component.html',
-  styleUrls: ['./todo.component.css']
+  selector: 'app-tasks',
+  templateUrl: './tasks.component.html',
+  styleUrls: ['./tasks.component.css']
 })
-export class TodoComponent implements OnInit {
+export class TasksComponent implements OnInit {
 
   receivedData : Task[] = [ ];
-  x: Task[] = [];
 
   constructor(
     private localStorage : LocalServiceService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private tasksService : TasksService
   ) { }
 
   ngOnInit(): void {
@@ -34,10 +35,19 @@ export class TodoComponent implements OnInit {
 
   getTasksList(){
     console.log(this.receivedData, "-------------> 32")
+    // this.tasksService.updatedTasksListObservable.subscribe((tasks:any) => {
+    //   console.log(tasks, "---------> 39")
+    //   this.receivedData = tasks;
+    // })
+    
     if(this.receivedData.length == 0){
       this.receivedData = this.localStorage.getItem("tasks")
       console.log(this.receivedData, this.localStorage.getItem("tasks"))
     }
+  }
+
+  updateTasksList(data:any){
+    this.receivedData = data
   }
 
   openDialog(item:any): void {
