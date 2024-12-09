@@ -16,6 +16,10 @@ export class TasksService {
     private localStorage : LocalServiceService
   ) { }
 
+  getInitialList(){
+    let data = this.localStorage.getItem('tasks')
+    this.updatedTasksList$.next(data)
+  }
   deleteTask(id: any){
     let data = this.localStorage.getItem('tasks')
       this.updatedTasksList$.next(data.filter((ele:any) => ele.id != id))

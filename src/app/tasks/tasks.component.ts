@@ -17,13 +17,13 @@ export class TasksComponent implements OnInit {
   receivedData : Task[] = [ ];
 
   constructor(
-    private localStorage : LocalServiceService,
     private dialog: MatDialog,
     private tasksService : TasksService
   ) { }
 
   ngOnInit(): void {
-    this.getTasksList()
+    this.tasksService.getInitialList();
+    this.getTasksList();
   }
 
   handleChildEvent(data: Task[]) {
@@ -35,15 +35,15 @@ export class TasksComponent implements OnInit {
 
   getTasksList(){
     console.log(this.receivedData, "-------------> 32")
-    // this.tasksService.updatedTasksListObservable.subscribe((tasks:any) => {
-    //   console.log(tasks, "---------> 39")
-    //   this.receivedData = tasks;
-    // })
+    this.tasksService.updatedTasksListObservable.subscribe((tasks:any) => {
+      console.log(tasks, "---------> 39")
+      this.receivedData = tasks;
+    })
     
-    if(this.receivedData.length == 0){
-      this.receivedData = this.localStorage.getItem("tasks")
-      console.log(this.receivedData, this.localStorage.getItem("tasks"))
-    }
+    // if(this.receivedData.length == 0){
+    //   this.receivedData = this.localStorage.getItem("tasks")
+    //   console.log(this.receivedData, this.localStorage.getItem("tasks"))
+    // }
   }
 
   updateTasksList(data:any){
